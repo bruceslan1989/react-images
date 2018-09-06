@@ -273,7 +273,7 @@ class Lightbox extends Component {
 					<Swipeable onSwipedLeft={this.gotoNext} onSwipedRight={this.gotoPrev} />
 				*/}
 
-				{isImage(image.src) && (
+				{isImage(image) && (
                     <img
                         className={css(this.classes.image, imageLoaded && this.classes.imageLoaded)}
                         onClick={onClickImage}
@@ -288,7 +288,7 @@ class Lightbox extends Component {
                     />
 				)}
 
-                {isVideo(image.src) && (
+                {isVideo(image) && (
                     <video
                         className={css(this.classes.image, imageLoaded && this.classes.imageLoaded)}
                         onClick={onClickImage}

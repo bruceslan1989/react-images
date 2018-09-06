@@ -1315,7 +1315,7 @@ var Lightbox = function (_Component) {
 			return React.createElement(
 				'figure',
 				{ className: css(this.classes.figure) },
-				isImage(image.src) && React.createElement('img', {
+				isImage(image) && React.createElement('img', {
 					className: css(this.classes.image, imageLoaded && this.classes.imageLoaded),
 					onClick: onClickImage,
 					sizes: sizes,
@@ -1327,7 +1327,7 @@ var Lightbox = function (_Component) {
 						maxHeight: 'calc(100vh - ' + heightOffset + ')'
 					}
 				}),
-				isVideo(image.src) && React.createElement(
+				isVideo(image) && React.createElement(
 					'video',
 					{
 						className: css(this.classes.image, imageLoaded && this.classes.imageLoaded),

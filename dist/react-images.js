@@ -1317,7 +1317,7 @@ var Lightbox = function (_Component) {
 			return React__default.createElement(
 				'figure',
 				{ className: aphrodite.css(this.classes.figure) },
-				isImage(image.src) && React__default.createElement('img', {
+				isImage(image) && React__default.createElement('img', {
 					className: aphrodite.css(this.classes.image, imageLoaded && this.classes.imageLoaded),
 					onClick: onClickImage,
 					sizes: sizes,
@@ -1329,7 +1329,7 @@ var Lightbox = function (_Component) {
 						maxHeight: 'calc(100vh - ' + heightOffset + ')'
 					}
 				}),
-				isVideo(image.src) && React__default.createElement(
+				isVideo(image) && React__default.createElement(
 					'video',
 					{
 						className: aphrodite.css(this.classes.image, imageLoaded && this.classes.imageLoaded),

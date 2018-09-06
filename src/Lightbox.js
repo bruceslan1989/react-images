@@ -290,6 +290,7 @@ class Lightbox extends Component {
 
                 {isVideo(image) && (
                     <video
+                        controls
                         className={css(this.classes.image, imageLoaded && this.classes.imageLoaded)}
                         onClick={onClickImage}
                         style={{

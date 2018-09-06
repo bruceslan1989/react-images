@@ -1006,7 +1006,10 @@ var canUseDom = !!(typeof window !== 'undefined' && window.document && window.do
  * @returns {boolean}
  */
 function isImage(file) {
-  return file.mime.search('image') !== -1;
+
+    console.log(file);
+
+    return file.mime.search('image') !== -1;
 }
 
 /**
@@ -1015,7 +1018,10 @@ function isImage(file) {
  * @returns {boolean}
  */
 function isVideo(file) {
-  return file.mime.search('video') !== -1;
+
+    console.log(file);
+
+    return file.mime.search('video') !== -1;
 }
 
 /**
@@ -1024,7 +1030,7 @@ function isVideo(file) {
  * @returns {boolean}
  */
 function getType(file) {
-  return file.mime;
+    return file.mime;
 }
 
 // consumers sometimes provide incorrect type or casing

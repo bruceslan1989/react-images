@@ -4,6 +4,9 @@
  * @returns {boolean}
  */
 export function isImage(file) {
+
+    console.log(file);
+
     return file.mime.search('image') !== -1;
 }
 
@@ -13,6 +16,9 @@ export function isImage(file) {
  * @returns {boolean}
  */
 export function isVideo(file) {
+
+    console.log(file);
+
     return file.mime.search('video') !== -1;
 }
 

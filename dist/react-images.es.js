@@ -998,6 +998,33 @@ function bindFunctions(functions) {
 
 var canUseDom = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
 
+/**
+ *
+ * @param file
+ * @returns {boolean}
+ */
+function isImage(file) {
+  return file.mime.search('image') !== -1;
+}
+
+/**
+ *
+ * @param file
+ * @returns {boolean}
+ */
+function isVideo(file) {
+  return file.mime.search('video') !== -1;
+}
+
+/**
+ *
+ * @param file
+ * @returns {boolean}
+ */
+function getType(file) {
+  return file.mime;
+}
+
 // consumers sometimes provide incorrect type or casing
 function normalizeSourceSet(data) {
 	var sourceSet = data.srcSet || data.srcset;
@@ -1282,6 +1309,29 @@ var Lightbox = function (_Component) {
 			return React.createElement(
 				'figure',
 				{ className: css(this.classes.figure) },
+				isImage(image.src) && React.createElement('img', {
+					className: css(this.classes.image, imageLoaded && this.classes.imageLoaded),
+					onClick: onClickImage,
+					sizes: sizes,
+					alt: image.alt,
+					src: image.src,
+					srcSet: sourceSet,
+					style: {
+						cursor: onClickImage ? 'pointer' : 'auto',
+						maxHeight: 'calc(100vh - ' + heightOffset + ')'
+					}
+				}),
+				isVideo(image.src) && React.createElement(
+					'video',
+					{
+						className: css(this.classes.image, imageLoaded && this.classes.imageLoaded),
+						onClick: onClickImage,
+						style: {
+							cursor: onClickImage ? 'pointer' : 'auto',
+							maxHeight: 'calc(100vh - ' + heightOffset + ')'
+						} },
+					React.createElement('source', { src: image.src, type: getType(image) })
+				),
 				React.createElement('img', {
 					className: css(this.classes.image, imageLoaded && this.classes.imageLoaded),
 					onClick: onClickImage,

@@ -15,6 +15,7 @@ import DefaultSpinner from './components/Spinner';
 import bindFunctions from './utils/bindFunctions';
 import canUseDom from './utils/canUseDom';
 import deepMerge from './utils/deepMerge';
+import { isImage, isVideo, getType } from './utils/formatReader';
 
 // consumers sometimes provide incorrect type or casing
 function normalizeSourceSet (data) {
@@ -271,6 +272,34 @@ class Lightbox extends Component {
 					https://fb.me/react-unknown-prop is resolved
 					<Swipeable onSwipedLeft={this.gotoNext} onSwipedRight={this.gotoPrev} />
 				*/}
+
+				{isImage(image.src) && (
+                    <img
+                        className={css(this.classes.image, imageLoaded && this.classes.imageLoaded)}
+                        onClick={onClickImage}
+                        sizes={sizes}
+                        alt={image.alt}
+                        src={image.src}
+                        srcSet={sourceSet}
+                        style={{
+                            cursor: onClickImage ? 'pointer' : 'auto',
+                            maxHeight: `calc(100vh - ${heightOffset})`,
+                        }}
+                    />
+				)}
+
+                {isVideo(image.src) && (
+                    <video
+                        className={css(this.classes.image, imageLoaded && this.classes.imageLoaded)}
+                        onClick={onClickImage}
+                        style={{
+                            cursor: onClickImage ? 'pointer' : 'auto',
+                            maxHeight: `calc(100vh - ${heightOffset})`,
+                        }}>
+                        <source src={image.src} type={getType(image)}/>
+					</video>
+                )}
+
 				<img
 					className={css(this.classes.image, imageLoaded && this.classes.imageLoaded)}
 					onClick={onClickImage}

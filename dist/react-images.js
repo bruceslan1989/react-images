@@ -1000,6 +1000,33 @@ function bindFunctions(functions) {
 
 var canUseDom = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
 
+/**
+ *
+ * @param file
+ * @returns {boolean}
+ */
+function isImage(file) {
+  return file.mime.search('image') !== -1;
+}
+
+/**
+ *
+ * @param file
+ * @returns {boolean}
+ */
+function isVideo(file) {
+  return file.mime.search('video') !== -1;
+}
+
+/**
+ *
+ * @param file
+ * @returns {boolean}
+ */
+function getType(file) {
+  return file.mime;
+}
+
 // consumers sometimes provide incorrect type or casing
 function normalizeSourceSet(data) {
 	var sourceSet = data.srcSet || data.srcset;
@@ -1284,6 +1311,29 @@ var Lightbox = function (_Component) {
 			return React__default.createElement(
 				'figure',
 				{ className: aphrodite.css(this.classes.figure) },
+				isImage(image.src) && React__default.createElement('img', {
+					className: aphrodite.css(this.classes.image, imageLoaded && this.classes.imageLoaded),
+					onClick: onClickImage,
+					sizes: sizes,
+					alt: image.alt,
+					src: image.src,
+					srcSet: sourceSet,
+					style: {
+						cursor: onClickImage ? 'pointer' : 'auto',
+						maxHeight: 'calc(100vh - ' + heightOffset + ')'
+					}
+				}),
+				isVideo(image.src) && React__default.createElement(
+					'video',
+					{
+						className: aphrodite.css(this.classes.image, imageLoaded && this.classes.imageLoaded),
+						onClick: onClickImage,
+						style: {
+							cursor: onClickImage ? 'pointer' : 'auto',
+							maxHeight: 'calc(100vh - ' + heightOffset + ')'
+						} },
+					React__default.createElement('source', { src: image.src, type: getType(image) })
+				),
 				React__default.createElement('img', {
 					className: aphrodite.css(this.classes.image, imageLoaded && this.classes.imageLoaded),
 					onClick: onClickImage,

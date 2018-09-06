@@ -1329,6 +1329,7 @@ var Lightbox = function (_Component) {
 				isVideo(image) && React.createElement(
 					'video',
 					{
+						key: currentImage,
 						controls: true,
 						className: css(this.classes.image, imageLoaded && this.classes.imageLoaded),
 						onClick: onClickImage,

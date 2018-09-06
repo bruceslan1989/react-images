@@ -1331,6 +1331,7 @@ var Lightbox = function (_Component) {
 				isVideo(image) && React__default.createElement(
 					'video',
 					{
+						key: currentImage,
 						controls: true,
 						className: aphrodite.css(this.classes.image, imageLoaded && this.classes.imageLoaded),
 						onClick: onClickImage,

@@ -1302,13 +1302,16 @@ var Lightbox = function (_Component) {
 			if (!images || !images.length) return null;
 
 			var image = images[currentImage];
-			var sourceSet = normalizeSourceSet(image);
+
+			var sourceSet = null;
+			if (isImage(image)) {
+				sourceSet = normalizeSourceSet(image);
+			}
+
 			var sizes = sourceSet ? '100vw' : null;
 
 			var thumbnailsSize = showThumbnails ? this.theme.thumbnail.size : 0;
 			var heightOffset = this.theme.header.height + this.theme.footer.height + thumbnailsSize + this.theme.container.gutter.vertical + 'px';
-
-			console.log(image);
 
 			return React__default.createElement(
 				'figure',

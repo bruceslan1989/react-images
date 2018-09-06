@@ -258,14 +258,17 @@ class Lightbox extends Component {
 		if (!images || !images.length) return null;
 
 		const image = images[currentImage];
-		const sourceSet = normalizeSourceSet(image);
+
+		let sourceSet = null;
+		if (isImage(image)) {
+            sourceSet = normalizeSourceSet(image);
+		}
+
 		const sizes = sourceSet ? '100vw' : null;
 
 		const thumbnailsSize = showThumbnails ? this.theme.thumbnail.size : 0;
 		const heightOffset = `${this.theme.header.height + this.theme.footer.height + thumbnailsSize
 			+ (this.theme.container.gutter.vertical)}px`;
-
-        console.log(image);
 
 		return (
 			<figure className={css(this.classes.figure)}>

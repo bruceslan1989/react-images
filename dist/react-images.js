@@ -1317,6 +1317,7 @@ var Lightbox = function (_Component) {
 				'figure',
 				{ className: aphrodite.css(this.classes.figure) },
 				isImage(image) && React__default.createElement('img', {
+					key: currentImage,
 					className: aphrodite.css(this.classes.image, imageLoaded && this.classes.imageLoaded),
 					onClick: onClickImage,
 					sizes: sizes,

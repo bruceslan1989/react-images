@@ -280,6 +280,7 @@ class Lightbox extends Component {
 
 				{isImage(image) && (
                     <img
+                        key={currentImage}
                         className={css(this.classes.image, imageLoaded && this.classes.imageLoaded)}
                         onClick={onClickImage}
                         sizes={sizes}

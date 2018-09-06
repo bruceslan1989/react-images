@@ -1315,6 +1315,7 @@ var Lightbox = function (_Component) {
 				'figure',
 				{ className: css(this.classes.figure) },
 				isImage(image) && React.createElement('img', {
+					key: currentImage,
 					className: css(this.classes.image, imageLoaded && this.classes.imageLoaded),
 					onClick: onClickImage,
 					sizes: sizes,

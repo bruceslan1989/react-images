@@ -1308,6 +1308,8 @@ var Lightbox = function (_Component) {
 			var thumbnailsSize = showThumbnails ? this.theme.thumbnail.size : 0;
 			var heightOffset = this.theme.header.height + this.theme.footer.height + thumbnailsSize + this.theme.container.gutter.vertical + 'px';
 
+			console.log(image);
+
 			return React__default.createElement(
 				'figure',
 				{ className: aphrodite.css(this.classes.figure) },

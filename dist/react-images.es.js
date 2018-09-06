@@ -1337,19 +1337,7 @@ var Lightbox = function (_Component) {
 							maxHeight: 'calc(100vh - ' + heightOffset + ')'
 						} },
 					React.createElement('source', { src: image.src, type: getType(image) })
-				),
-				React.createElement('img', {
-					className: css(this.classes.image, imageLoaded && this.classes.imageLoaded),
-					onClick: onClickImage,
-					sizes: sizes,
-					alt: image.alt,
-					src: image.src,
-					srcSet: sourceSet,
-					style: {
-						cursor: onClickImage ? 'pointer' : 'auto',
-						maxHeight: 'calc(100vh - ' + heightOffset + ')'
-					}
-				})
+				)
 			);
 		}
 	}, {

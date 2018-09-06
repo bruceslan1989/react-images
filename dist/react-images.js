@@ -1339,19 +1339,7 @@ var Lightbox = function (_Component) {
 							maxHeight: 'calc(100vh - ' + heightOffset + ')'
 						} },
 					React__default.createElement('source', { src: image.src, type: getType(image) })
-				),
-				React__default.createElement('img', {
-					className: aphrodite.css(this.classes.image, imageLoaded && this.classes.imageLoaded),
-					onClick: onClickImage,
-					sizes: sizes,
-					alt: image.alt,
-					src: image.src,
-					srcSet: sourceSet,
-					style: {
-						cursor: onClickImage ? 'pointer' : 'auto',
-						maxHeight: 'calc(100vh - ' + heightOffset + ')'
-					}
-				})
+				)
 			);
 		}
 	}, {
